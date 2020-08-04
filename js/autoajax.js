@@ -30,5 +30,5 @@ function fetchdata() {
 
 $(document).ready(function() {
     fetchdata()
-    setInterval(fetchdata, 5000);
+    setInterval(fetchdata, 20000);
 });

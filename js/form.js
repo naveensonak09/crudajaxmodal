@@ -1,3 +1,4 @@
+// function insertdata() {
 $(document).ready(function() {
     $('#insert').validate({
         rules: {
@@ -34,4 +35,7 @@ $(document).ready(function() {
             });
         }
     });
+    // }
+
+    // insertdata();
 });
