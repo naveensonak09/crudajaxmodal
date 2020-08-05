@@ -1,4 +1,3 @@
-// function insertdata() {
 $(document).ready(function() {
     $('#insert').validate({
         rules: {
@@ -31,11 +30,9 @@ $(document).ready(function() {
                 success: function(data) {
                     $('#insert')[0].reset();
                     $('#modalForm').modal('hide');
+                    fetchdata();
                 }
             });
         }
     });
-    // }
-
-    // insertdata();
 });
