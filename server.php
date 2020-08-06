@@ -1,9 +1,14 @@
 <?php
     include ('includes/config.php');
 ?>
- 
+  
 <?php
-    $query="SELECT * FROM `users` order by id desc limit 0,5";
+
+    $limit = 5;  
+    if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
+    $start_from = ($page-1) * $limit;
+
+    $query="SELECT * FROM `users` order by id desc limit $start_from,$limit";
     $data=mysqli_query($config,$query);
     $json_array = array();
     while($row=mysqli_fetch_assoc($data))
@@ -13,13 +18,15 @@
         $email = $row['email'];
         $message = $row['message'];
         $date = $row['date'];
-
-        $json_array[] = array( "id" => $id,
-                                "name" => $name,
-                                "email" => $email,
-                                "message" => $message,
-                                "date" =>  $date);
-    }
-        echo json_encode($json_array);
 ?>
+        <tr> 
+            <td><?php echo $id; ?></td> 
+            <td><?php echo $name; ?></td> 
+            <td><?php echo $email; ?></td> 
+            <td><?php echo $message; ?></td> 
+            <td><?php echo $date; ?></td> 
+        </tr> 
+    <?php 
+        }
+    ?>
               

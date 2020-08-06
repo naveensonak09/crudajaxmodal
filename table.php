@@ -1,5 +1,4 @@
 <html>
-
 <head>
     <title>table</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -72,7 +71,27 @@
                 </tbody>
             </table>
         </div>
+        
+        <?php
+            include ('includes/config.php');
+            $limit = 5;
+            $sql = "SELECT COUNT(*) as id FROM users";  
+            $result = mysqli_query($config, $sql);  
+            $row = mysqli_fetch_array($result);  
+            $total = $row['id'];  
+            $total_pages = ceil($total/$limit); 
+        ?>
+ 
+        <div class="container">
+            <ul class='pagination text-center' id="pagination">
+                <?php if(!empty($total_pages)){for($i=1; $i<=$total_pages; $i++){  
+                if($i == 1){?>
+                <li class='active'  id="<?php echo $i;?>"><a href='server.php?page=<?php echo $i;?>'><?php echo $i;?></a></li> 
+                <?php }else{?>
+                <li id="<?php echo $i;?>"><a href='server.php?page=<?php echo $i;?>'><?php echo $i;?></a></li>
+                <?php } } }?>			
+            </ul>
+        </div>
     </div>
 </body>
-
 </html>
