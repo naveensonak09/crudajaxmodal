@@ -1,4 +1,3 @@
-// function insertdata() {
 $(document).ready(function() {
     $('#insert').validate({
         rules: {
@@ -31,11 +30,12 @@ $(document).ready(function() {
                 success: function(data) {
                     $('#insert')[0].reset();
                     $('#modalForm').modal('hide');
+                    // console.log("insert", data);
+                    fetchdata();
+                    pagination();
+
                 }
             });
         }
     });
-    // }
-
-    // insertdata();
 });
